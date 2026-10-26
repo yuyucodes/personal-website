@@ -1,12 +1,27 @@
-const c={about:["About","Hi, I'm Yuyu. Write a short intro about yourself here."],
-projects:["Projects","List your projects here."],
-contact:["Contact","Add your email and links here."]};
+const content={about:["About","Hi, I'm Esther. I'm a student and developer based in Boston, MA and Charlotte, NC."],
+projects:["Projects","my projects."],
+contact:["Contact","my email and links."]};
 
-const m=document.getElementById("m");let last;
+const modal=document.getElementById("m");
+const title=document.getElementById("mt");
+const message=document.getElementById("mp");
+const closeButton=document.getElementById("x");
 
-document.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{last=b;const d=c[b.dataset.d];mt.textContent=d[0];mp.textContent=d[1];m.showModal()});
+let lastFocusedElement=null;
 
-x.onclick=()=>m.close();
+const openDialog=button=>{const dialogData=content[button.dataset.d];
 
-m.addEventListener("click",e=>{if(e.target===m)m.close()});
-m.addEventListener("close",()=>last&&last.focus());
+if(!dialogData)return;
+
+lastFocusedElement=button;
+title.textContent=dialogData[0];
+message.textContent=dialogData[1];
+modal.showModal()};
+
+document.querySelectorAll("[data-d]").forEach(button=>{button.addEventListener("click",()=>openDialog(button))});
+
+closeButton.addEventListener("click",()=>modal.close());
+
+modal.addEventListener("click",event=>{if(event.target===modal){modal.close()}});
+
+modal.addEventListener("close",()=>{if(lastFocusedElement){lastFocusedElement.focus()}});
