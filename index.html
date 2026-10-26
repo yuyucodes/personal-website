@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <title>yuyucodes</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <svg class="tiles" width="100%" height="100%" aria-hidden="true">
+        <defs>
+            <pattern id="t" width="120" height="120" patternUnits="userSpaceOnUse">
+                <path d="M2 3 Q60 0 118 4 M3 2 Q0 60 4 118" fill="none" stroke="#cfd3dc" stroke-width="3" stroke-linecap="round"/>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#t)"/>
+    </svg>
+    <header>
+        <a href="#" aria-label="yuyucodes home">yuyucodes.</a>
+    </header>
+        <main class="stage">
+            <h1 class="sr">yuyucodes portfolio</h1>
+                <img class="layer" src="assets/tub.png" alt="">
+                <img class="layer w1" src="assets/wave1.png" alt="">
+                <img class="layer w2" src="assets/wave2.png" alt="">
+                <img class="layer w3" src="assets/wave3.png" alt="">
+            <div class="duck">
+                <div class="sway">
+                    <img src="assets/duck.png" alt="">
+                    <button data-d="about" aria-label="About me"></button>
+                </div>
+            </div>
+        </main>
+<dialog id="m" aria-labelledby="mt"><h2 id="mt"></h2><p id="mp"></p><button id="x">Close</button></dialog>
+<script src="script.js"></script></body></html>
