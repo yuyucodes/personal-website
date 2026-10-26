@@ -40,6 +40,25 @@ const closeButton=document.getElementById("x");
 
 let lastFocusedElement=null;
 
+const reducedMotion=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function closeDialog(){
+  if(reducedMotion()){modal.close();return;}
+  modal.classList.add("dialog-closing");
+}
+
+modal.addEventListener("animationend",e=>{
+  if(e.animationName==="dialog-out"){
+    modal.classList.remove("dialog-closing");
+    modal.close();
+  }
+});
+
+modal.addEventListener("cancel",e=>{
+  e.preventDefault();
+  closeDialog();
+});
+
 const openDialog=button=>{const dialogData=content[button.dataset.d];
 
 if(!dialogData)return;
@@ -66,14 +85,14 @@ if(form){
 
     const mailtoLink=`mailto:esyuec@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${messageText}`)}`;
     window.location.href=mailtoLink;
-    modal.close();
+    closeDialog();
   });
 }}
 
 document.querySelectorAll("[data-d]").forEach(button=>{button.addEventListener("click",()=>openDialog(button))});
 
-closeButton.addEventListener("click",()=>modal.close());
+closeButton.addEventListener("click",()=>closeDialog());
 
-modal.addEventListener("click",event=>{if(event.target===modal){modal.close()}});
+modal.addEventListener("click",event=>{if(event.target===modal){closeDialog()}});
 
 modal.addEventListener("close",()=>{if(lastFocusedElement){lastFocusedElement.focus()}});
