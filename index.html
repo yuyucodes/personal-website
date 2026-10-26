@@ -33,6 +33,14 @@
       <img class="layer" src="assets/tub.png" alt="">
       <img class="layer w1" src="assets/wave1.png" alt="">
       <img class="layer w2" src="assets/wave2.png" alt="">
+
+      <div class="duck duck-right">
+        <div class="sway sway-right">
+          <img src="assets/duck.png" alt="">
+          <button data-d="contact" aria-label="Contact me"></button>
+        </div>
+      </div>
+
       <img class="layer w3" src="assets/wave3.png" alt="">
 
       <div class="duck">
@@ -44,9 +52,11 @@
     </main>
 
     <dialog id="m" aria-labelledby="mt">
-      <h2 id="mt"></h2>
-      <p id="mp"></p>
-      <button id="x">Close</button>
+      <div class="dialog-shell">
+        <h2 id="mt"></h2>
+        <div id="mp"></div>
+        <button id="x" class="dialog-close">Close</button>
+      </div>
     </dialog>
 
     <script src="script.js"></script>
